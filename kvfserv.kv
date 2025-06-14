@@ -1,0 +1,137 @@
+#:kivy 2.3.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import date datetime.date
+#:import datetime datetime.datetime
+#:import os os
+#:import platform platform
+
+#:set today date.today()
+#:set now datetime.now()
+
+<TopbarLabel@Label>
+    font_name: 'Nasa'
+    markup: True
+    color: get_color_from_hex("#000000")
+    valign:'middle'
+
+<BodyLabel@Label>
+    markup: True
+    color: get_color_from_hex("#000000")
+    halign: "left"
+    valign: "center"
+    font_size: sp(12)
+    font_name: 'Droidsans'
+    size_hint: (.5, 0)
+    padding:0,0,"20dp",0
+    pos_hint: {'left':0}
+
+
+<MainScreen>:
+
+    BoxLayout:
+        orientation: "vertical"
+        canvas.before:
+            Color:
+                rgba:230,230,230, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+            orientation: "horizontal"
+            padding:0,0,0,"20dp"
+            size_hint_y: 0.1
+            pos_hint: {'top':0}
+
+            TopbarLabel:
+                id: time
+                text: today.strftime("%d-%b-%Y")
+                font_size: "14sp"
+                halign: 'left'
+                padding:"20dp",0,0,0
+
+            TopbarLabel:
+                id: device_name
+                text: "Device|Info"
+                font_size: "16sp"
+                bold: True
+                halign: 'center'
+        
+        BoxLayout:
+            adaptive_height: True
+            orientation: "vertical"
+            size_hint: (1, .9)        
+            canvas:
+                Color:
+                    rgba: 0, 0, 0, .6
+                BoxShadow:
+                    pos: self.x, self.y + dp(25)
+                    size: self.width , self.height
+                    inset: True
+                    blur_radius: 60
+                Color:
+                    rgba: .8, .8, .8, 1
+                BoxShadow:
+                    pos: self.x, self.y + dp(25)
+                    size: self.width, self.height
+                    inset: True
+                    blur_radius: 60
+
+            GridLayout:
+                cols:2
+                rows:7
+                row_default_height:30  
+                pos_hint: {'center_x':.5,'center_y':.5}
+                size_hint: (1,1)      
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, .65
+                    Color:
+                        rgba: .8, .8, .8, 1
+                    RoundedRectangle:
+                        radius:[0,0,0,0]
+                        pos: self.x, self.y + dp(35)
+                        size: self.width, self.height - dp(20)
+                canvas:
+                    # target element statements
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.x, self.y + dp(35)
+                        size: self.width, self.height - dp(20)
+
+                BodyLabel:
+                    text:"Device Name:"
+                BodyLabel:
+                    text: platform.node()
+
+                BodyLabel:
+                    text:"OS :"
+                BodyLabel:
+                    text: platform.system()
+
+                BodyLabel:
+                    text:"OS Version:"
+                BodyLabel:
+                    text: platform.version()
+                    color: get_color_from_hex("#73D216")
+
+                BodyLabel:
+                    text:"OS Release:"
+                BodyLabel:
+                    text: platform.release()
+                    color: get_color_from_hex("#73D216")
+
+                BodyLabel:
+                    text:"Platform :"
+                BodyLabel:
+                    text: platform.platform()
+
+                BodyLabel:
+                    text:"Processor :"
+                BodyLabel:
+                    text: platform.processor()
+
+                BodyLabel:
+                    text:"Machine :"
+                BodyLabel:
+                    text: platform.machine()
