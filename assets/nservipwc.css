@@ -1,0 +1,270 @@
+/*--/ [Nserv IP Webcam] /--*/
+/*--/ Body and Loader /--*/
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: .75em;
+  background-color: #F0F0F0;
+  background-image: -webkit-linear-gradient(left, #C8C8C8 1px, transparent 1px), -webkit-linear-gradient(top, #C8C8C8 1px, transparent 1px);
+  background-image: -moz-linear-gradient(left, #C8C8C8 1px, transparent 1px), -moz-linear-gradient(top, #C8C8C8 1px, transparent 1px);
+  background-image: -o-linear-gradient(left, #C8C8C8 1px, transparent 1px), -o-linear-gradient(top, #C8C8C8 1px, transparent 1px);
+  background-image: -ms-linear-gradient(left, #C8C8C8 1px, transparent 1px), -ms-linear-gradient(top, #C8C8C8 1px, transparent 1px);
+  background-image: linear-gradient(to right, #C8C8C8 1px, transparent 1px), linear-gradient(to bottom, #C8C8C8 1px, transparent 1px);
+  background-size: 0.3rem 0.3rem;
+
+}
+
+
+.loader {
+
+    width: 100%;
+    min-height: 100vh;
+    background-color: #F0F0F0;
+    background-image: -webkit-linear-gradient(left, #C8C8C8 1px, transparent 1px), -webkit-linear-gradient(top, #C8C8C8 1px, transparent 1px);
+    background-image: -moz-linear-gradient(left, #C8C8C8 1px, transparent 1px), -moz-linear-gradient(top, #C8C8C8 1px, transparent 1px);
+    background-image: -o-linear-gradient(left, #C8C8C8 1px, transparent 1px), -o-linear-gradient(top, #C8C8C8 1px, transparent 1px);
+    background-image: -ms-linear-gradient(left, #C8C8C8 1px, transparent 1px), -ms-linear-gradient(top, #C8C8C8 1px, transparent 1px);
+    background-image: linear-gradient(to right, #C8C8C8 1px, transparent 1px), linear-gradient(to bottom, #C8C8C8 1px, transparent 1px);
+    background-size: 0.3rem 0.3rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-animation: loader 0.3s 0.3s ease forwards;
+    animation: loader 0.3s 0.3s ease-in forwards;
+    z-index: 99;
+}
+.loader h2 {
+    font-family: Open Sans;
+    font-weight: 300;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333;
+}
+.progress-bar {
+    width: 15%;
+    height: 2px;
+    background-color: #666;
+    position: relative;
+    top: calc(50vh - 1px);
+    left: calc(50% - 7.5%);
+}
+.progress-bar:before {
+    content: "";
+    display: block;
+    width: 0px;
+    height: 4px;
+    position: absolute;
+    top: -1px;
+    border-left: 0px solid #00FF00;
+    -webkit-animation: progress 0.3s ease-in-out forwards;
+    animation: progress 0.3s ease-in-out forwards;
+}
+@-webkit-keyframes loader {
+    to {left: -100%;}
+}
+@keyframes loader {
+    to {left: -100%;}
+}
+@-webkit-keyframes progress {
+    to {border-left: 16.8em solid #00FF00;}
+}
+@keyframes progress {
+    to {border-left: 16.8em solid #00FF00;}
+}
+/*--/ End of Body and Loader /--*/
+/*--/ Navbar Section /--*/
+.nav-section{
+  z-index: 8; 
+  border-bottom: 7px solid #7A7A7A;
+
+}
+.nav-con{
+  left: 0;
+}
+
+.navbar-b {  
+    height:45px;
+    background-image: linear-gradient(
+        #A0A0A0,
+        #C1C1C1,
+        #C3C3C3,
+        #C8C8C8 17%,
+        #AAAAAA 20%, /* End highlight */
+        #A3A3A3 23%, /* start key */
+        #A1A1A1,
+        #A1A1A1
+    ), linear-gradient(170deg, #CDC4BD, #C6BDB6);
+    background-size: 100% 100%, 100% 100%;
+    background-position: 0 0, 0 0;
+}
+.navbar-b img{
+  width:40px;
+  height:25px;
+  padding-right: 15px;
+}
+.nav-header-text{
+  font-family: Open Sans;
+  font-size: 20px;
+  color: #000;
+}
+/*--/ End of Navbar section /--*/
+/*--/ Home Section /--*/
+.home-section{
+
+    background-image: linear-gradient(
+        #A1A1A1,
+        #A1A1A1 97%,
+        #9D9D9D 98%, /* end key */
+        #646464 99%, /* start shadow */
+        #393939
+    ), linear-gradient(170deg, #CDC4BD, #C6BDB6);
+    background-size: 100% 100%, 100% 100%;
+    background-position: 0 0, 0 0;
+    height: 87vh;
+
+}
+.feed-body{
+    top: 15px;
+    
+    margin-bottom: 15px;
+}
+.row-margin-b{
+    
+}
+
+.vid-feed-col{
+    padding:5px;
+}
+
+.vid-feed-img{
+    width: 100%;
+    height: 72vh;
+}
+.vid-feed-img img{
+    z-index: 99;
+}
+.vid-feed-img .errormess{
+    font-family: Open Sans;
+    font-weight: 500;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+.video-feed{
+    z-index: 1;
+}
+.server-offline{
+    z-index: 0;
+
+}
+#video {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #000;
+  /*background: #ffffff url("./logo.png")top center no-repeat;*/
+    background-image: linear-gradient(90deg, transparent 15%, rgba(134, 135, 129, 0.05), transparent 85%),
+        radial-gradient(rgba(92, 93, 87, 0.75), transparent 70%),
+        linear-gradient(#65675C, #727469, #6E746A);
+    background-size: 10px 100%, 200px 200px, 100% 100%;
+    background-position: 0 0, center center, 0 0;
+    background-repeat: repeat, no-repeat, no-repeat ;
+
+}
+
+.camera_type-title-bar{
+
+  height: 35px;
+  width:74%;
+  -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%); 
+  background: black;
+}
+.switch-camera-btn{
+    right: 15px;
+    bottom: 0;
+    position: absolute;
+    height: 35px;
+    width: calc(26% + 10%);
+    -webkit-clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%); 
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    background: linear-gradient(180deg, #000000 0%,  #3C3C3C 51%, #1E1E1E 100%);
+    
+}
+.switch-camera-btn button{
+    background-image: radial-gradient(#3C3C3C 30%, #5A5A5A 45%, transparent 65%),
+        radial-gradient(#2E232B 30%, #524846 50%, transparent 65%),
+        linear-gradient(
+            #A0A0A0,
+            #C1C1C1,
+            #C3C3C3,
+            #C8C8C8 17%,
+            #AAAAAA 20%, /* End highlight */
+            #A3A3A3 23%, /* start key */
+            #A1A1A1,
+            #9D9D9D 77%, /* end key */
+            #646464 81%, /* start shadow */
+            #393939
+        );
+    background-size: 15px 60px, 20px 70px, 100% 100%;
+    background-position: calc(100% + 14px) -10px, -19px -10px, top left;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    text-align: center;
+    right: 15px;
+    height: 34px;
+    position: absolute;
+    border: None;
+    border-left: 1px solid #000;
+}
+.camera_type-title{
+     padding-left: 30px;
+    color: rgb(200,200,200);
+    padding-top: 5px;
+}
+/* Audio Player container */
+.audio-player-container {
+    text-align: center;
+}
+
+/* Custom Play/Pause Button */
+.audio-controls button {
+    background-image: radial-gradient(#3C3C3C 30%, #5A5A5A 45%, transparent 65%),
+        radial-gradient(#2E232B 30%, #524846 50%, transparent 65%),
+        linear-gradient(
+            #A0A0A0,
+            #C1C1C1,
+            #C3C3C3,
+            #C8C8C8 17%,
+            #AAAAAA 20%, /* End highlight */
+            #A3A3A3 23%, /* start key */
+            #A1A1A1,
+            #9D9D9D 77%, /* end key */
+            #646464 81%, /* start shadow */
+            #393939
+        );
+    background-size: 15px 60px, 20px 70px, 100% 100%;
+    background-position: calc(100% + 14px) -10px, -19px -10px, top left;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    text-align: center;
+    left: 5px;
+    height: 34px;
+    min-width: 60px;
+    position: absolute;
+    border: 1px solid #000;
+    color: #000;
+    margin-top: 5px;
+
+}
+
+
+
+
+/*--/ End /--*/

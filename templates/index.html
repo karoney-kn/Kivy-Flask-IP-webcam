@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!-- ========================================================================================= -->
+    <title> Kivy_Flask IP|Webcam</title>
+<!-- ========================================================================================= -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+<!-- ========================================================================================= -->
+    <link rel="shortcut icon" href="{{ url_for('serve_staticfiles', filename='./logo.png') }}">
+<!-- ========================================================================================= -->
+    <link href="{{ url_for('serve_staticfiles', filename='./bootstrap.min.css') }}" rel="stylesheet">
+<!-- ========================================================================================= -->
+  <!-- Template Main CSS File -->
+    <link href="{{ url_for('serve_staticfiles', filename='./nservipwc.css') }}" rel="stylesheet">
+
+  </head>
+  <body>
+  <!--/ Loader /-->  
+  <div class="loader">
+    <h2>Loading</h2>
+    <div class="progress-bar"></div>
+  </div>
+  <!--/ Loader End /-->
+
+  <div class="container-fluid">
+  <!--/ Main-Container /--> 
+    <div class="row">
+      <!--/ Main row /-->
+      <div class="col-md-2 d-none d-md-block"><!--/ Empty Column /--></div>
+      <div class="col-md-8 feed-body">
+        <main class="main">
+          <header class="nav-section sticky-top">
+            <nav class="navbar navbar-b navbar-trans navbar-expand-md" id="mainNav">
+              <div class="container nav-con">   
+                <span class="nav-header-text"><img class="nav-header-image" src="{{ url_for('serve_staticfiles', filename='./logo.png') }}">[Kivy Flask] IP|Webcam</span>                                      
+              </div>
+            </nav>
+          </header>
+          <section class="home-section">
+            <div class="row row-margin-b">
+
+              <div class="col-md-12   mb-5 mb-sm-2">                       
+                <div class="position-relative vid-feed-col">
+                  <div class="vid-feed-img">
+                    {% if error_message %}
+                        <img id="video" src="{{ url_for('serve_staticfiles', filename='./logo.png') }}" alt="Video Feed">
+                        <h4 class="errormess"style="color: red; font-weight: bold;">{{ error_message }}</h4>
+                    {% else %}
+                        <img id="video" src="{{ url_for('video_feed') }}" class="video-feed" alt="Video Feed">
+                    {% endif %}
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="camera_type-title-bar">
+                        <div class="row">
+                          <span class="camera_type-title">
+                            <p class="font-weight-600 mt-0 mb-0"><b>{{ camera_type }}</b> <!--<b> {{ camera_status }}</b>--></p>
+                          </span>
+                        </div>  
+                      </div>
+
+                      <div class="switch-camera-btn">
+                        <div class="row video-feed-button">
+                          <div class="col-md-12"><button  onclick="switchCamera()">Camera ◀︎ ▶︎</button></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="audio-player-container">
+                    <audio id="audioPlayer" preload="auto" loop>
+                        <source src="{{ url_for('audio') }}" type="audio/x-wav;codec=pcm">
+                          Your browser does not support the audio element.
+                    </audio>
+                    <div class="audio-controls">
+                      <button id="playPauseBtn" onclick="togglePlayPause()">
+                        <span id="icon" class="playpause-icon">Audio ▶︎</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>  
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+      <div class="col-md-2 d-none d-md-block"><!-- Empty Column --> </div>
+    </div><!--/ Main-row End /-->
+  </div>
+  <!--/ Main-container End /-->
+    <script>
+        const audioPlayer = document.getElementById("audioPlayer");
+        const playPauseBtn = document.getElementById("playPauseBtn");
+
+        function togglePlayPause() {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playPauseBtn.innerHTML = '<span id="icon" class="playpause-icon">Audio ▮▮</span>';
+            } else {
+                audioPlayer.pause();
+                playPauseBtn.innerHTML = '<span id="icon" class="playpause-icon">Audio ▶︎</span>';
+            }
+        }
+    </script>
+  <script src="{{ url_for('serve_staticfiles', filename='./jquery.min.js') }}"></script>
+  <script src="{{ url_for('serve_staticfiles', filename='./bootstrap.bundle.min.js') }}"></script>
+  <!-- Template Main JS File -->
+  <script src="{{ url_for('serve_staticfiles', filename='./cameraswitch.js') }}"></script>
+  </body>
+</html>
